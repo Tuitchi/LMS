@@ -11,7 +11,7 @@ function clearModalInputs() {
     document.getElementById("book-author").value = "";
     document.getElementById("book-isbn").value = "";
     document.getElementById("book-description").value = "";
-    document.getElementById("book-status").value = "Available";
+    document.getElementById("book-status").value = "Completed";
     document.getElementById("book-image").value = "";
     editIndex = null;
 }
@@ -37,7 +37,7 @@ function createBookElement(book, index) {
         <p class="text-sm text-gray-600 text-center">Author: ${book.author}</p>
         <p class="text-sm text-gray-600 text-center">ISBN: ${book.isbn}</p>
         <p class="text-sm text-gray-600 text-center">Description: ${book.description}</p>
-        <p class="text-sm text-gray-600 text-center">Availability: ${book.status}</p>
+        <p class="text-sm text-gray-600 text-center">status: ${book.status}</p>
         <div class="flex justify-center mt-2 space-x-2">
             <button onclick="editBook(${index})" class="bg-green-500 text-white px-4 py-2 rounded transition duration-300 hover:bg-green-600 hover:scale-105">
                 <i class='bx bxs-edit-alt'></i>

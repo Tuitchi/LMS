@@ -65,15 +65,16 @@
         <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
             <div class="bg-white p-6 rounded shadow-lg w-96">
                 <h2 class="text-lg font-bold mb-4" id="modal-title">Add New Book</h2>
-                <input type="file" id="book-image" class="w-full p-2 border rounded mb-2">
-                <input type="text" id="book-title" placeholder="Book Title" class="w-full p-2 border rounded mb-2">
-                <input type="text" id="book-author" placeholder="Author Name" class="w-full p-2 border rounded mb-2">
-                <input type="text" id="book-isbn" placeholder="ISBN" class="w-full p-2 border rounded mb-2">
+                <input type="file" id="book-image" class="w-full p-2 border rounded mb-2" required>
+                <input type="text" id="book-title" placeholder="Book Title" class="w-full p-2 border rounded mb-2" required>
+                <input type="text" id="book-author" placeholder="Author Name" class="w-full p-2 border rounded mb-2" required>
+                <input type="text" id="book-isbn" placeholder="ISBN" class="w-full p-2 border rounded mb-2" required>
                 <textarea id="book-description" placeholder="Book Description"
-                    class="w-full p-2 border rounded mb-2"></textarea>
-                <select id="book-status" class="w-full p-2 border rounded mb-2">
-                    <option value="available">Available</option>
-                    <option value="unavailable">Unavailable</option>
+                    class="w-full p-2 border rounded mb-2" required></textarea>
+                <select id="book-status" class="w-full p-2 border rounded mb-2" required>
+                    <option value="Completed">Completed</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Upcoming">Upcoming</option>
                 </select>
                 <div class="flex justify-end space-x-2">
                     <button id="close-modal" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
