@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Author Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="relative flex items-center justify-center h-screen bg-cover bg-center" style="background-image: url('landingpage.jpg');">
+
+<body class="relative flex items-center justify-center h-screen bg-cover bg-center"
+    style="background-image: url('landingpage.jpg');">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 bg-white p-8 rounded-lg shadow-md w-96">
         <h2 class="text-2xl font-bold text-center text-gray-800">Author Login</h2>
-        <form action="dashboard.html" method="POST" class="mt-4">
+        <p id="error-message" class="text-red-500 text-center mt-2 hidden">Invalid username or password.</p>
+
+        <form id="login-form" class="mt-4">
             <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-semibold">Email</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                <label for="username" class="block text-gray-700 font-semibold">Username</label>
+                <input type="text" id="username" name="username"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required>
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 font-semibold">Password</label>
-                <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                <input type="password" id="password" name="password"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required>
             </div>
-            <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">Login</button>
+            <button type="submit"
+                class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">Login</button>
         </form>
-        <a href="index.html" class="block text-center mt-4 text-green-500 font-semibold hover:underline">Back to Home</a>
+
+        <a href="index.html" class="block text-center mt-4 text-green-500 font-semibold hover:underline">Back to
+            Home</a>
     </div>
 </body>
+<script>
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("error-message");
+
+        if (username === "admin" && password === "admin") {
+            window.location.href = "library_admin.html";
+        } else {
+            errorMessage.classList.remove("hidden");
+        }
+    });
+</script>
+
 </html>
