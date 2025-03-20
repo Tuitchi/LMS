@@ -139,4 +139,4 @@ document.getElementById('dropdownBtn').addEventListener('click', function () {
     document.getElementById('dropdownMenu').classList.toggle('hidden');
 });
 
-updateBookList();
+updateBookList(); 

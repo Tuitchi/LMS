@@ -7,14 +7,15 @@
     <title>Open Library || Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+<div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
+    <video id="loading-video" autoplay loop muted class="w-64 h-64">
+        <source src="animation.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
 <body class="bg-green-100 min-h-screen flex flex-col">
     <nav class="bg-green-700 text-white p-7 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
@@ -66,11 +67,13 @@
             <div class="bg-white p-6 rounded shadow-lg w-96">
                 <h2 class="text-lg font-bold mb-4" id="modal-title">Add New Book</h2>
                 <input type="file" id="book-image" class="w-full p-2 border rounded mb-2" required>
-                <input type="text" id="book-title" placeholder="Book Title" class="w-full p-2 border rounded mb-2" required>
-                <input type="text" id="book-author" placeholder="Author Name" class="w-full p-2 border rounded mb-2" required>
+                <input type="text" id="book-title" placeholder="Book Title" class="w-full p-2 border rounded mb-2"
+                    required>
+                <input type="text" id="book-author" placeholder="Author Name" class="w-full p-2 border rounded mb-2"
+                    required>
                 <input type="text" id="book-isbn" placeholder="ISBN" class="w-full p-2 border rounded mb-2" required>
-                <textarea id="book-description" placeholder="Book Description"
-                    class="w-full p-2 border rounded mb-2" required></textarea>
+                <textarea id="book-description" placeholder="Book Description" class="w-full p-2 border rounded mb-2"
+                    required></textarea>
                 <select id="book-status" class="w-full p-2 border rounded mb-2" required>
                     <option value="Completed">Completed</option>
                     <option value="Ongoing">Ongoing</option>
@@ -93,10 +96,43 @@
             </div>
         </div>
     </section>
+    <div id="delete-toast" class="fixed top-5 right-5 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
+        Book deleted successfully!
+    </div>
+    <div id="save-toast" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
+        Book saved successfully!
+    </div>
     <footer class="bg-green-700 text-white text-center py-4">
         <p>&copy; 2025 Open Library. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById("confirm-delete").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const deleteToast = document.getElementById("delete-toast");
+            deleteToast.classList.remove("hidden");
+
+            setTimeout(() => {
+                deleteToast.classList.add("hidden");
+            }, 3000);
+
+            this.reset();
+        });
+        document.getElementById("save-book").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const saveToast = document.getElementById("save-toast");
+            saveToast.classList.remove("hidden");
+
+            setTimeout(() => {
+                saveToast.classList.add("hidden");
+            }, 3000);
+
+            this.reset();
+        });
+    </script>
 </body>
+
 </html>

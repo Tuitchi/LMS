@@ -7,14 +7,15 @@
     <title>Open Library</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+
+
 </head>
+<div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-[#F5F7F6] z-50">
+    <img id="loading-video" src="animation.gif">
+    </img>
+</div>
+
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <nav class="bg-green-700 text-white p-7 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
@@ -25,14 +26,14 @@
             </ul>
         </div>
     </nav>
-    
+
     <section class="flex-grow flex flex-col items-center mt-10">
         <div class="relative w-2/3 md:w-1/2">
             <input type="text" id="search-bar" placeholder="Search for books..."
                 class="w-full p-3 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
             <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl'></i>
         </div>
-        
+
         <div class="flex justify-end w-2/3 md:w-1/2 mt-3">
             <button class="bg-green-600 p-2 px-4 rounded text-white mr-2" id="grid-view">Grid View</button>
             <button class="bg-green-600 p-2 px-4 rounded text-white" id="list-view">List View</button>
@@ -44,6 +45,11 @@
 
     <footer class="bg-green-700 text-white text-center py-4">
         <p>&copy; 2025 Open Library. All rights reserved.</p>
-    </footer>    
+    </footer>
 </body>
+<script>
+    setTimeout(() => {
+        document.getElementById("loading-screen").classList.add("hidden");
+    }, 3000);
+</script>
 </html>
