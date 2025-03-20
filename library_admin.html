@@ -1,59 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Library || Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
-<body class="bg-green-100 h-screen">
-   <nav class="bg-green-700 text-white p-7 shadow-lg">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold">Online Library</h1>
 
-        <div class="relative">
-            <button id="dropdownBtn" class="flex items-center space-x-2 focus:outline-none">
-                <img src="profile_image.avif" alt="Profile" class="w-10 h-10 rounded-full">
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            
-            <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
-                <div class="p-4 flex items-center space-x-3">
+<body class="bg-green-100 min-h-screen flex flex-col">
+    <nav class="bg-green-700 text-white p-7 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Online Library</h1>
+
+            <div class="relative">
+                <button id="dropdownBtn" class="flex items-center space-x-2 focus:outline-none">
                     <img src="profile_image.avif" alt="Profile" class="w-10 h-10 rounded-full">
-                    <div>
-                        <p class="font-semibold">Juan Tamad</p>
-                        <p class="text-sm text-gray-600">Author</p>
+                    <i class='bx bx-chevron-down'></i>
+                </button>
+
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
+                    <div class="p-4 flex items-center space-x-3">
+                        <img src="profile_image.avif" alt="Profile" class="w-10 h-10 rounded-full">
+                        <div>
+                            <p class="font-semibold">Juan Tamad</p>
+                            <p class="text-sm text-gray-600">Author</p>
+                        </div>
                     </div>
+                    <hr>
+                    <a href="index.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Log out</a>
                 </div>
-                <hr>
-                <a href="index.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Log out</a>
             </div>
         </div>
-    </div>
-</nav>
-    
-    <section class="h-auto">
+    </nav>
+
+    <!-- Make this section flex-grow to push the footer down -->
+    <section class="flex-grow">
         <div class="container mx-auto my-6 p-4 flex flex-col items-center">
-            <!-- Centered Search Bar -->
             <div class="relative w-2/3 md:w-1/2">
                 <input type="text" id="search-bar" placeholder="Search for books..."
                     class="w-full p-3 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
                 <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl'></i>
             </div>
 
-            <!-- Add Book Button (Aligned to the right) -->
             <div class="w-2/3 md:w-1/2 flex justify-end mt-4">
-                <button class="bg-green-600 px-4 py-2 flex items-center space-x-2 rounded text-white hover:bg-green-700" id="add-modal">
+                <button class="bg-green-600 px-4 py-2 flex items-center space-x-2 rounded text-white hover:bg-green-700"
+                    id="add-modal">
                     <i class='bx bx-plus text-lg'></i>
                     <span>Add Book</span>
                 </button>
             </div>
         </div>
-        
+
         <div id="book-list" class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
         </div>
-        
+
         <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
             <div class="bg-white p-6 rounded shadow-lg w-96">
                 <h2 class="text-lg font-bold mb-4" id="modal-title">Add New Book</h2>
@@ -61,7 +70,8 @@
                 <input type="text" id="book-title" placeholder="Book Title" class="w-full p-2 border rounded mb-2">
                 <input type="text" id="book-author" placeholder="Author Name" class="w-full p-2 border rounded mb-2">
                 <input type="text" id="book-isbn" placeholder="ISBN" class="w-full p-2 border rounded mb-2">
-                <textarea id="book-description" placeholder="Book Description" class="w-full p-2 border rounded mb-2"></textarea>
+                <textarea id="book-description" placeholder="Book Description"
+                    class="w-full p-2 border rounded mb-2"></textarea>
                 <select id="book-status" class="w-full p-2 border rounded mb-2">
                     <option value="available">Available</option>
                     <option value="unavailable">Unavailable</option>
@@ -73,10 +83,14 @@
             </div>
         </div>
     </section>
-    
-    <footer class="bg-green-700 text-white text-center py-4 bottom-0">
+
+    <!-- Footer is now fixed to the bottom -->
+    <footer class="bg-green-700 text-white text-center py-4">
         <p>&copy; 2025 Library Management System. All rights reserved.</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
+
+
 </html>

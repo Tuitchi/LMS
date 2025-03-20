@@ -7,18 +7,25 @@
     <title>Online Library</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100 h-screen">
+<body class="bg-gray-100 min-h-screen flex flex-col">
     <nav class="bg-blue-600 p-4 text-white flex justify-between">
         <h1 class="text-xl font-bold">Online Library</h1>
         <ul class="flex space-x-4">
             <li><a href="/index.html" class="hover:underline">Home</a></li>
-            <li><a href="#" class="hover:underline">Books</a></li>
             <li><a href="/index.html#contact" class="hover:underline">Contact</a></li>
         </ul>
     </nav>
-    <section class="h-screen">
+    
+    <section class="flex-grow">
         <div class="container mx-auto my-6 p-4">
             <input type="text" id="search-bar" placeholder="Search for books..." class="w-full p-2 border rounded">
         </div>
@@ -35,7 +42,6 @@
     <footer class="bg-blue-600 text-white text-center p-4 mt-6">
         <p>&copy; 2025 Online Library. All rights reserved.</p>
     </footer>
-    <script src="script_client.js"></script>
 </body>
 
 </html>
