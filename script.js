@@ -107,3 +107,7 @@ function editBook(index) {
 }
 
 updateBookList();
+
+document.getElementById('dropdownBtn').addEventListener('click', function () {
+    document.getElementById('dropdownMenu').classList.toggle('hidden');
+});
