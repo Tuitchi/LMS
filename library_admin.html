@@ -15,18 +15,18 @@
 </div>
 
 <body class="bg-green-100 min-h-screen flex flex-col">
-    <nav class="bg-green-700 text-white p-7 shadow-lg">
+    <nav class="bg-green-600 text-white p-7 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">Open Library</h1>
-
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Library Logo" class="h-10 w-10">
+                <h1 class="text-xl font-bold">Open Library</h1>
+            </div>
             <div class="relative">
                 <button id="dropdownBtn" class="flex items-center space-x-2 focus:outline-none">
                     <img src="profile_image.avif" alt="Profile" class="w-10 h-10 rounded-full">
                     <i class='bx bx-chevron-down'></i>
                 </button>
-
-                <div id="dropdownMenu"
-                    class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
                     <div class="p-4 flex items-center space-x-3">
                         <img src="profile_image.avif" alt="Profile" class="w-10 h-10 rounded-full">
                         <div>
@@ -40,6 +40,7 @@
             </div>
         </div>
     </nav>
+    
 
     <section class="flex-grow">
         <div class="container mx-auto my-6 p-4 flex flex-col items-center">
@@ -100,7 +101,7 @@
     <div id="save-toast" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
         Book saved successfully!
     </div>
-    <footer class="bg-green-700 text-white text-center py-4">
+    <footer class="bg-green-600 text-white text-center py-4">
         <p>&copy; 2025 Open Library. All rights reserved.</p>
     </footer>
 

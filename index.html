@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-green-700">
-    <nav class="bg-green-700 text-white p-7 shadow-lg">
+    <nav class="bg-green-600 text-white p-7 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">Open Library</h1>
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Library Logo" class="h-10 w-10">
+                <h1 class="text-xl font-bold">Open Library</h1>
+            </div>
+            
             <ul class="flex space-x-6">
                 <li><a href="#" class="hover:underline">Home</a></li>
                 <li><a href="#contact" class="hover:underline">Contact</a></li>
@@ -23,7 +26,6 @@
             </ul>
         </div>
     </nav>
-
     <header id="home" class="relative flex flex-col items-center justify-center text-center h-screen bg-cover bg-center"
         style="background-image: url('landingpage.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -68,7 +70,7 @@
     <div id="toast" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">
         Message sent successfully!
     </div>
-    <footer class="bg-green-700 text-white text-center py-4">
+    <footer class="bg-green-600 text-white text-center py-4">
         <p>&copy; 2025 Open Library. All rights reserved.</p>
     </footer>
 </body>
