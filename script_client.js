@@ -2,12 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const bookList = document.getElementById("book-list");
     const gridViewBtn = document.getElementById("grid-view");
     const listViewBtn = document.getElementById("list-view");
+    const searchBar = document.getElementById("search-bar");
 
-    function loadBooks(view = "grid") {
-        let books = JSON.parse(localStorage.getItem("books")) || [];
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+
+    function loadBooks(view = "grid", filteredBooks = null) {
         bookList.innerHTML = "";
+        const displayBooks = filteredBooks || books;
 
-        books.forEach(book => {
+        displayBooks.forEach((book) => {
             const bookElement = createBookElement(book, view);
             bookList.appendChild(bookElement);
         });
@@ -30,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             bookContainer.classList.add("flex", "items-center", "gap-4", "p-2");
             bookContainer.innerHTML = `
-                ${imgTag ? `<div class="w-[300px]">${imgTag}</div>` : ""}
+                ${imgTag ? `<div class="w-[150px]">${imgTag}</div>` : ""}
                 <div>
                     <h2 class="text-lg font-bold">${book.title}</h2>
                     <p class="text-sm text-gray-600">Author: ${book.author}</p>
@@ -52,6 +55,21 @@ document.addEventListener("DOMContentLoaded", function () {
             bookList.classList.add("flex", "flex-col");
             bookList.classList.remove("grid", "grid-cols-1", "md:grid-cols-3", "gap-4");
         }
+    }
+
+    // 🔍 Search Functionality
+    searchBar.addEventListener("input", function () {
+        const query = searchBar.value.toLowerCase().trim();
+        const filteredBooks = books.filter(book =>
+            book.title.toLowerCase().includes(query) ||
+            book.author.toLowerCase().includes(query) ||
+            book.isbn.includes(query)
+        );
+        loadBooks(getCurrentView(), filteredBooks);
+    });
+
+    function getCurrentView() {
+        return bookList.classList.contains("grid") ? "grid" : "list";
     }
 
     gridViewBtn.addEventListener("click", () => loadBooks("grid"));
