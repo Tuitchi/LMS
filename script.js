@@ -80,8 +80,10 @@ function createBookElement(book, index) {
         ${imgTag}
         <h2 class="text-lg font-bold text-center">${book.title}</h2>
         <p class="text-sm text-gray-600 text-center">Author: ${book.author}</p>
-        <button onclick="editBook(${index})" class="bg-green-500 text-white px-4 py-2 rounded">Edit</button>
-        <button onclick="deleteBook(${index})" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+        <div class="float-right">
+        <button onclick="editBook(${index})" class="bg-green-500 text-white px-4 py-2 rounded"><i class='bx bxs-edit-alt' style='color:#fffefe'  ></i></button>
+        <button onclick="deleteBook(${index})" class="border border-solid border-red-500 text-white px-4 py-2 rounded"><i class='bx bxs-trash' style='color:#f30000'  ></i></button>
+        </div>
     `;
     return bookContainer;
 }
