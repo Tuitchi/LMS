@@ -1,4 +1,4 @@
-let books = [];
+let books = JSON.parse(localStorage.getItem("books")) || [];
 let editIndex = null;
 
 function clearModalInputs() {
@@ -9,6 +9,10 @@ function clearModalInputs() {
     document.getElementById("book-status").value = "available";
     document.getElementById("book-image").value = "";
     editIndex = null;
+}
+
+function saveBooksToLocalStorage() {
+    localStorage.setItem("books", JSON.stringify(books));
 }
 
 document.getElementById("add-modal").addEventListener("click", function () {
@@ -43,7 +47,7 @@ document.getElementById("save-book").addEventListener("click", function () {
         };
         reader.readAsDataURL(imageFile);
     } else {
-        saveBookData(title, author, isbn, description, status, "");
+        saveBookData(title, author, isbn, description, status, editIndex !== null ? books[editIndex].imageSrc : "");
     }
 });
 
@@ -53,6 +57,7 @@ function saveBookData(title, author, isbn, description, status, imageSrc) {
     } else {
         books.push({ title, author, isbn, description, status, imageSrc });
     }
+    saveBooksToLocalStorage();
     updateBookList();
     document.getElementById("modal").classList.add("hidden");
     clearModalInputs();
@@ -73,24 +78,30 @@ function createBookElement(book, index) {
     let imgTag = book.imageSrc ? `<img src="${book.imageSrc}" class="w-full h-48 object-cover mb-2 rounded">` : "";
     bookContainer.innerHTML = `
         ${imgTag}
-        <h2 class="text-lg font-bold">${book.title}</h2>
-        <p class="text-sm text-gray-600">Author: ${book.author}</p>
-        <p class="text-sm text-gray-600">ISBN: ${book.isbn}</p>
-        <p class="text-sm text-gray-600">Description: ${book.description}</p>
-        <p class="text-sm text-gray-600">Availability: ${book.status}</p>
-        <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded" onclick="editBook(${index})">Edit</button>
-        <button class="mt-2 bg-transparent border-solid border-red-500 text-white px-4 py-2 rounded" onclick="deleteBook(${index})"><i class='bx bxs-trash' style='color:#f30000'  ></i></button>
+        <h2 class="text-lg font-bold text-center">${book.title}</h2>
+        <p class="text-sm text-gray-600 text-center">Author: ${book.author}</p>
+        <button onclick="editBook(${index})" class="bg-green-500 text-white px-4 py-2 rounded">Edit</button>
+        <button onclick="deleteBook(${index})" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
     `;
     return bookContainer;
 }
 
+function deleteBook(index) {
+    books.splice(index, 1);
+    saveBooksToLocalStorage();
+    updateBookList();
+}
+
 function editBook(index) {
     const book = books[index];
+    document.getElementById("modal").classList.remove("hidden");
+    document.getElementById("modal-title").textContent = "Edit Book";
     document.getElementById("book-title").value = book.title;
     document.getElementById("book-author").value = book.author;
     document.getElementById("book-isbn").value = book.isbn;
     document.getElementById("book-description").value = book.description;
     document.getElementById("book-status").value = book.status;
     editIndex = index;
-    document.getElementById("modal").classList.remove("hidden");
 }
+
+updateBookList();
