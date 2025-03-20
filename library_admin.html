@@ -9,11 +9,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
 </head>
-<div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
-    <video id="loading-video" autoplay loop muted class="w-64 h-64">
-        <source src="animation.webm" type="video/webm">
-        Your browser does not support the video tag.
-    </video>
+<div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-[#F5F7F6] z-50">
+    <img id="loading-video" src="animation.gif">
+    </img>
 </div>
 
 <body class="bg-green-100 min-h-screen flex flex-col">
@@ -108,30 +106,9 @@
 
     <script src="script.js"></script>
     <script>
-        document.getElementById("confirm-delete").addEventListener("click", function (event) {
-            event.preventDefault();
-
-            const deleteToast = document.getElementById("delete-toast");
-            deleteToast.classList.remove("hidden");
-
             setTimeout(() => {
-                deleteToast.classList.add("hidden");
-            }, 3000);
-
-            this.reset();
-        });
-        document.getElementById("save-book").addEventListener("click", function (event) {
-            event.preventDefault();
-
-            const saveToast = document.getElementById("save-toast");
-            saveToast.classList.remove("hidden");
-
-            setTimeout(() => {
-                saveToast.classList.add("hidden");
-            }, 3000);
-
-            this.reset();
-        });
+        document.getElementById("loading-screen").classList.add("hidden");
+    }, 3000);
     </script>
 </body>
 

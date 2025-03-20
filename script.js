@@ -5,7 +5,30 @@ let bookToDelete = null;
 function saveBooksToLocalStorage() {
     localStorage.setItem("books", JSON.stringify(books));
 }
+document.getElementById("confirm-delete").addEventListener("click", function (event) {
+    event.preventDefault();
 
+    const deleteToast = document.getElementById("delete-toast");
+    deleteToast.classList.remove("hidden");
+
+    setTimeout(() => {
+        deleteToast.classList.add("hidden");
+    }, 3000);
+
+    this.reset();
+});
+document.getElementById("save-book").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const saveToast = document.getElementById("save-toast");
+    saveToast.classList.remove("hidden");
+
+    setTimeout(() => {
+        saveToast.classList.add("hidden");
+    }, 3000);
+
+    this.reset();
+});
 function clearModalInputs() {
     document.getElementById("book-title").value = "";
     document.getElementById("book-author").value = "";
