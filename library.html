@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="bg-gray-100 h-screen">
+    <nav class="bg-blue-600 p-4 text-white flex justify-between">
+        <h1 class="text-xl font-bold">Online Library</h1>
+        <ul class="flex space-x-4">
+            <li><a href="#" class="hover:underline">Home</a></li>
+            <li><a href="#" class="hover:underline">Books</a></li>
+            <li><a href="#" class="hover:underline">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container mx-auto my-6 p-4">
+        <input type="text" id="search-bar" placeholder="Search for books..." class="w-full p-2 border rounded">
+    </div>
+    
+    <div class="container mx-auto p-4 text-right">
+        <button class="bg-blue-500 p-2 rounded text-white" id="add-modal">Add Book<i class='bx bx-plus'></i></button>
+    </div>
+    
+    <div id="book-list" class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+    </div>
+    
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded shadow-lg w-96">
+            <h2 class="text-lg font-bold mb-4" id="modal-title">Add New Book</h2>
+            <input type="file" id="book-image" class="w-full p-2 border rounded mb-2">
+            <input type="text" id="book-title" placeholder="Book Title" class="w-full p-2 border rounded mb-2">
+            <input type="text" id="book-author" placeholder="Author Name" class="w-full p-2 border rounded mb-2">
+            <input type="text" id="book-isbn" placeholder="ISBN" class="w-full p-2 border rounded mb-2">
+            <textarea id="book-description" placeholder="Book Description" class="w-full p-2 border rounded mb-2"></textarea>
+            <select id="book-status" class="w-full p-2 border rounded mb-2">
+                <option value="available">Available</option>
+                <option value="checked-out">Checked Out</option>
+            </select>
+            <div class="flex justify-end space-x-2">
+                <button id="close-modal" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+                <button id="save-book" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-blue-600 text-white text-center p-4 mt-6">
+        <p>&copy; 2025 Online Library. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
