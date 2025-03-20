@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body class="bg-gray-100 h-screen">
+<body class="bg-green-100 h-screen">
    <nav class="bg-green-700 text-white p-7 shadow-lg">
     <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-xl font-bold">Online Library</h1>
@@ -32,17 +32,23 @@
         </div>
     </div>
 </nav>
+    
     <section class="h-screen">
-        <div class="container mx-auto my-6 p-4 flex justify-center">
+        <div class="container mx-auto my-6 p-4 flex flex-col items-center">
+            <!-- Centered Search Bar -->
             <div class="relative w-2/3 md:w-1/2">
                 <input type="text" id="search-bar" placeholder="Search for books..."
                     class="w-full p-3 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
                 <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl'></i>
             </div>
-        </div>
-        
-        <div class="container mx-auto p-4 text-right">
-            <button class="bg-green-600 p-2 rounded text-white hover:bg-green-700" id="add-modal">Add Book</button>
+
+            <!-- Add Book Button (Aligned to the right) -->
+            <div class="w-2/3 md:w-1/2 flex justify-end mt-4">
+                <button class="bg-green-600 px-4 py-2 flex items-center space-x-2 rounded text-white hover:bg-green-700" id="add-modal">
+                    <i class='bx bx-plus text-lg'></i>
+                    <span>Add Book</span>
+                </button>
+            </div>
         </div>
         
         <div id="book-list" class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
