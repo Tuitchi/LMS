@@ -10,27 +10,26 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body class="bg-green-700">
-    <nav class="bg-green-600 text-white p-7 shadow-lg">
+    <nav class="bg-green-600 text-white p-5 shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="logo.png" alt="Library Logo" class="h-10 w-10">
                 <h1 class="text-xl font-bold">Open Library</h1>
             </div>
-            
             <ul class="flex space-x-6">
-                <li><a href="#" class="hover:underline">Home</a></li>
-                <li><a href="#contact" class="hover:underline">Contact</a></li>
-                <li><a href="author.html" class="hover:underline">Author</a></li>
+                <li><a href="#" class="nav-link font-bold underline text-white" data-target="home">Home</a></li>
+                <li><a href="#contact" class="nav-link hover:underline" data-target="contact">Contact</a></li>
+                <li><a href="author.html" class="nav-link hover:underline" data-target="author">Author</a></li>
             </ul>
         </div>
     </nav>
+    
     <header id="home" class="relative flex flex-col items-center justify-center text-center h-screen bg-cover bg-center"
         style="background-image: url('landingpage.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="relative z-10 text-white px-4 flex flex-col items-center">
-            <h2 class="text-5xl font-bold mb-4">Welcome to the Open Library</h2>
+            <h2 class="text-5xl font-bold mb-4 mt-20">Welcome to the <span class="text-green-600">Open Library</span></h2>
             <p class="max-w-xl text-lg mb-6 text-center flex justify-center">A platform for publishing and reading free
                 books, where you can upload and share your books with a wide audience at no cost.</p>
             <a href="/library.html"
@@ -40,10 +39,9 @@
     </header>
 
     <section id="contact" class="bg-green-300 py-16 text-center h-screen">
-        <h2 class="text-3xl font-bold text-gray-900">Get in Touch</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mt-10">Get in Touch</h2>
         <p class="mt-4 text-gray-900">For inquiries, please fill out the form below or contact us at <span
                 class="font-semibold">openlibrary@gmail.com</span></p>
-
         <div class="mt-8 max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
             <form class="space-y-4">
                 <input type="text" name="name" placeholder="Your Name" required
@@ -75,18 +73,47 @@
     </footer>
 </body>
 <script>
-    document.querySelector("form").addEventListener("submit", function (event) {
+    document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const toast = document.getElementById("toast");
+
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const toast = document.getElementById("toast");
-        toast.classList.remove("hidden");
-
+        toast.classList.remove("hidden"); 
         setTimeout(() => {
-            toast.classList.add("hidden");
+            toast.classList.add("hidden"); 
         }, 3000);
 
-        this.reset();
+        form.reset(); 
     });
-</script>
 
+    // Scroll event for navbar activation
+    const sections = document.querySelectorAll("section, header");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function setActiveLink(target) {
+        navLinks.forEach(link => link.classList.remove("font-bold", "underline", "text-white"));
+        const activeLink = [...navLinks].find(link => link.dataset.target === target);
+        if (activeLink) {
+            activeLink.classList.add("font-bold", "underline", "text-white");
+        }
+    }
+    function onScroll() {
+        let currentSection = "home";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.id;
+            }
+        });
+
+        setActiveLink(currentSection);
+    }
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+});
+</script>
 </html>
