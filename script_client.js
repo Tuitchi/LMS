@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const gridViewBtn = document.getElementById("grid-view");
     const listViewBtn = document.getElementById("list-view");
     const searchBar = document.getElementById("search-bar");
-    
+
     let books = JSON.parse(localStorage.getItem("books")) || [];
     console.log(books);
     function loadBooks(view = "grid", filteredBooks = null) {
@@ -25,7 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function createBookElement(book, view) {
         const bookContainer = document.createElement("div");
-        bookContainer.classList.add("bg-white", "p-4", "shadow", "rounded-lg", "transition", "duration-300", "hover:shadow-lg");
+        bookContainer.classList.add(
+            "bg-white", "p-4", "rounded-lg", 
+            "transition", "duration-300", "hover:shadow-lg",
+            "cursor-pointer", "w-full"
+        );
 
         let imgTag = book.imageSrc ? `<img src="${book.imageSrc}" class="w-full h-48 object-cover mb-2 rounded">` : "";
 
@@ -39,18 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p class="text-sm text-${book.status === 'Completed' ? 'green' : 'red'}-500 font-semibold">${book.status}</p>
             `;
         } else {
-            bookContainer.classList.add("flex", "items-center", "gap-4", "p-2");
+            bookContainer.classList.add("flex", "items-center", "gap-4");
             bookContainer.innerHTML = `
                 ${imgTag ? `<div class="w-[150px]">${imgTag}</div>` : ""}
                 <div>
                     <h2 class="text-lg font-bold">${book.title}</h2>
                     <p class="text-sm text-gray-600">Author: ${book.author}</p>
                     <p class="text-sm text-gray-600">ISBN: ${book.isbn}</p>
-                    <p class="text-sm text-gray-600">Description: ${book.description}</p>
+                    <p class="text-sm text-gray-600">${book.description}</p>
                     <p class="text-sm text-${book.status === 'Completed' ? 'green' : 'red'}-500 font-semibold">${book.status}</p>
                 </div>
             `;
         }
+
+        // ✅ Redirect to book details page using ISBN
+        bookContainer.addEventListener("click", function () {
+            window.location.href = `book_details.html?isbn=${book.isbn}`;
+        });
 
         return bookContainer;
     }

@@ -10,8 +10,9 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body class="bg-green-700">
-    <nav class="bg-green-600 text-white p-5 shadow-lg fixed top-0 w-full z-50">
+    <nav class="bg-green-600 text-white p-5 shadow-lg fixed top-0 w-full z-30">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="logo.png" alt="Library Logo" class="h-10 w-10">
@@ -24,12 +25,13 @@
             </ul>
         </div>
     </nav>
-    
+
     <header id="home" class="relative flex flex-col items-center justify-center text-center h-screen bg-cover bg-center"
         style="background-image: url('landingpage.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="relative z-10 text-white px-4 flex flex-col items-center">
-            <h2 class="text-5xl font-bold mb-4 mt-20">Welcome to the <span class="text-green-600">Open Library</span></h2>
+            <h2 class="text-5xl font-bold mb-4 mt-20">Welcome to the <span class="text-green-600">Open Library</span>
+            </h2>
             <p class="max-w-xl text-lg mb-6 text-center flex justify-center">A platform for publishing and reading free
                 books, where you can upload and share your books with a wide audience at no cost.</p>
             <a href="/library.html"
@@ -72,48 +74,6 @@
         <p>&copy; 2025 Open Library. All rights reserved.</p>
     </footer>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-    const toast = document.getElementById("toast");
+<script src="main.js"></script>
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        toast.classList.remove("hidden"); 
-        setTimeout(() => {
-            toast.classList.add("hidden"); 
-        }, 3000);
-
-        form.reset(); 
-    });
-
-    // Scroll event for navbar activation
-    const sections = document.querySelectorAll("section, header");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    function setActiveLink(target) {
-        navLinks.forEach(link => link.classList.remove("font-bold", "underline", "text-white"));
-        const activeLink = [...navLinks].find(link => link.dataset.target === target);
-        if (activeLink) {
-            activeLink.classList.add("font-bold", "underline", "text-white");
-        }
-    }
-    function onScroll() {
-        let currentSection = "home";
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 80;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSection = section.id;
-            }
-        });
-
-        setActiveLink(currentSection);
-    }
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-});
-</script>
 </html>
